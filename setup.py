@@ -1,0 +1,10 @@
+from setuptools import setup\n
+setup(
+    name='photo_downloader',
+    version='0.0.1',
+    packages=['photo_downloader'],
+    entry_points={
+        'console_scripts': [
+            'photo_downloader = photo_downloader.__main__:main'
+         ]
+    })
