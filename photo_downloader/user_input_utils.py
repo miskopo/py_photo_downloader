@@ -10,7 +10,7 @@ def confirm_validity() -> bool:
             return False
 
 
-def numerical_choice(*, min: int, max: int, prompt: str) -> int:
+def numerical_choice(*, min_value: int, max_value: int, prompt: str) -> int:
     while True:
         try:
             choice: int = int(input(f"{prompt.strip()} "))
@@ -18,8 +18,7 @@ def numerical_choice(*, min: int, max: int, prompt: str) -> int:
             logger.error("Invalid choice, try again")
             continue
         else:
-            if min <= choice <= max:
+            if min_value <= choice <= max_value:
                 return choice
             else:
                 logger.error("Invalid choice, try again")
-

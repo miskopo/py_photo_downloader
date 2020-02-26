@@ -8,9 +8,6 @@ from photo_downloader.user_input_utils import numerical_choice
 
 
 class FileSystemUtils:
-    @staticmethod
-    def _create_folder(path: str) -> None:
-        pass
 
     @staticmethod
     def _choose_import_source() -> str:
@@ -21,19 +18,19 @@ class FileSystemUtils:
             print(
                 f"{i + 1}. {device.get('ID_FS_LABEL') if device.get('ID_FS_LABEL') else 'Internal'}: "
                 f"{device.device_node} ({device.get('ID_FS_TYPE')}) - {device.get('ID_MODEL')}")
-        choice: int = numerical_choice(min=1, max=len(list(devices)), prompt="Your choice?")
+        choice: int = numerical_choice(min_value=1, max_value=len(list(devices)), prompt="Your choice?")
         for p in disk_partitions():
             if p.device == list(devices)[choice - 1].device_node:
                 return p.mountpoint
 
     @staticmethod
-    def _list_media_on_import_source() -> [str]:
+    def _find_media_on_import_source() -> [str]:
 
         def _fast_scandir(subfolder):
-            subfolders = [f.path for f in scandir(subfolder) if f.is_dir()]
-            for subfolder in list(subfolders):
-                subfolders.extend(_fast_scandir(subfolder))
-            return subfolders
+            subdirs = [f.path for f in scandir(subfolder) if f.is_dir()]
+            for subfolder in list(subdirs):
+                subdirs.extend(_fast_scandir(subfolder))
+            return subdirs
 
         mmc_path: str = FileSystemUtils._choose_import_source()
         files: [str] = []
@@ -47,6 +44,11 @@ class FileSystemUtils:
 
     @staticmethod
     def _sort_files_by_mimetype(files: [str]) -> dict:
+        """
+        Sort found files into categories raw, processed and video files.
+        :param files: list of paths of found files from import source
+        :return: dictionary with fields raw, processed and video and respective lists of paths
+        """
         raw_image_files: [str] = [file for file in files if from_file(file, mime=True) == 'image/tiff']
         processed_image_files: [str] = [file for file in files if from_file(file, mime=True) == 'image/jpeg']
         video_files: [str] = [file for file in files if from_file(file, mime=True).startswith("video")]
@@ -57,4 +59,6 @@ class FileSystemUtils:
             "video": video_files
         }
 
-
+    @staticmethod
+    def _create_folder(path: str) -> None:
+        pass
