@@ -1,4 +1,5 @@
-from setuptools import setup\n
+from setuptools import setup
+
 setup(
     name='photo_downloader',
     version='0.0.1',
