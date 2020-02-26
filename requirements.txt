@@ -1,1 +1,4 @@
+pyudev
+psutil
 ExifRead
+python-magic
