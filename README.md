@@ -3,6 +3,7 @@
 ![Licence](https://img.shields.io/badge/licence-GPLv3-blue.svg)
 ![Operating system](https://img.shields.io/badge/OS-Linux-yellow.svg)
 ![Python versions](https://img.shields.io/pypi/pyversions/Django.svg)
+![PyPI](https://img.shields.io/pypi/v/photo-downloader)
 
 Do you have DSLR or Point-and-Shoot camera and want to download photos into custom directory structure? 
 Are you dissapointed with Rapid Photo Downloader development? Do you like CLI? Then this tool **is definitely right for you!**
