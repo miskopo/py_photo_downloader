@@ -1,4 +1,7 @@
 from photo_downloader import logger
+import os
+
+DIVIDER = min(80, int(os.popen('stty size', 'r').read().split()[1])) * "#"
 
 
 def confirm_validity() -> bool:
