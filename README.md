@@ -15,18 +15,20 @@ Are you dissapointed with Rapid Photo Downloader development? Do you like CLI? T
 - [ ] Safely unmount SD Card after the operation is finished
 
 ### Installation :snowboarder:
-Project is under heavy development, but you can go ahead and install current snapshot by cloning this repo
+Project is under development, but you can go ahead and install current snapshot by cloning this repo
 
-```git clone https://github.com/miskopo/photo_downloader.git```
+```git clone https://github.com/miskopo/py_photo_downloader.git```
 
 and running
  
-```pip3 isntall -e .```
+```pip3 install -e .```
 
-from the project directory
+from the project directory, or, if you want more stable version, use `pip`:
+
+```pip3 install photo-downloader```
 
 ### Usage :vertical_traffic_light:
-Not yet, but it will be usable soon!
+Run `photo_downloader` from directory you would like to use as root for importing and follow onscreen instrucstions.
 
 ### Author  :smirk_cat:
 @miskopo
